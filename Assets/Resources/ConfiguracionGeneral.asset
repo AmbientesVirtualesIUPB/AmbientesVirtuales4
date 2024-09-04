@@ -16,3 +16,6 @@ MonoBehaviour:
   plataformaObjetivo: 0
   ip: 10.0.100.4
   puerto: 8080
+  notas: '10.0.100.4
+
+    127.0.0.1'

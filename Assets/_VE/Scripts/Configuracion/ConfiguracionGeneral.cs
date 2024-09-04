@@ -29,10 +29,12 @@ public class ConfiguracionGeneral : ScriptableObject
     /// Ip del servidor al que se va a conectar.
     /// </summary>
     public string ip = "127.0.0.1";
+
     /// <summary>
-    /// Puerto por el cuál está escuchando el Socket.
+    /// Notas para tener en cuenta.
     /// </summary>
-    public string puerto = "8080";
+    [Multiline(3)]
+    public string notas = "";
 
     /// <summary>
     /// Obtiene un prefijo basado en el tipo de gráficos seleccionado.
@@ -97,11 +99,7 @@ public class ConfiguracionGeneral : ScriptableObject
 
     public string GetIP()
     {
-        return PlayerPrefs.GetString("ip", "127.0.0.1");
-    }
-    public string GetPuerto()
-    {
-        return PlayerPrefs.GetString("puerto", "8080");
+        return PlayerPrefs.GetString("ip", ip);
     }
 }
 

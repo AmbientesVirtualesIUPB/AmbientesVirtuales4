@@ -2,14 +2,17 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Best.WebSockets;
-[RequireComponent(typeof(GestionMensajesServidor))]
 
+[AddComponentMenu("Morion Servidor/Servidor")]
+[RequireComponent(typeof(GestionMensajesServidor))]
 public class Servidor : MonoBehaviour
 {
     public delegate void Evento();
-
+    [HideInInspector]
     public string url = "ws://127.0.0.1:8080";
+    public string puerto = "8080";
     public bool debugEnPantalla = false;
+    public bool debugEnConsola = false;
     [ConditionalHide("debugEnPantalla", true)]
     public UnityEngine.UI.Text txtDebug;
     WebSocket ws;
@@ -17,6 +20,9 @@ public class Servidor : MonoBehaviour
     public GestionMensajesServidor gestorMensajes;
     public Evento EventoConectado;
     public static Servidor singleton;
+    [HideInInspector]
+    public string estado = "((inactivo))";
+    public bool conectado = false;
 
     private void Awake()
     {
@@ -30,12 +36,17 @@ public class Servidor : MonoBehaviour
         return;
     }
 
-    private void Start()
-    {
-        url = "ws://" +
+    public string GetURL()
+	{
+        return "ws://" +
                 ConfiguracionGeneral.configuracionDefault.GetIP() +
                 ":" +
-                ConfiguracionGeneral.configuracionDefault.GetPuerto();
+                puerto;
+    }
+
+    private void Start()
+    {
+        url = GetURL();
         Conectar();
     }
     public void CambairURL(string n_url)
@@ -45,23 +56,24 @@ public class Servidor : MonoBehaviour
 
     public void Conectar()
     {
+        estado = "(( Conectando... ))";
         var webSocket = new WebSocket(new Uri(url));
         ws = webSocket;
         webSocket.OnOpen += OnWebSocketOpen;
         webSocket.OnMessage += OnMessageReceived;
         webSocket.OnClosed += OnWebSocketClosed;
         webSocket.Open();
-        UnityEngine.SceneManagement.SceneManager.LoadScene("LP_CIS", UnityEngine.SceneManagement.LoadSceneMode.Additive);
     }
 
     private void OnWebSocketOpen(WebSocket webSocket)
     {
-        Debug.Log("Websocket abierto!");
+        if(debugEnConsola) Debug.Log("Websocket abierto!");
+        estado = "(( <color=#00ff00> Conectado :D </color> ))";
         if (txtDebug != null)
         {
             txtDebug.text += "\n" + ("Websocket abierto!");
         }
-
+        conectado = true;
         if (EventoConectado != null)
             EventoConectado();
         //Presentacion p = ControlUsuario.singleton.GetPresentacion();
@@ -73,7 +85,7 @@ public class Servidor : MonoBehaviour
 
     private void OnMessageReceived(WebSocket webSocket, string message)
     {
-        Debug.Log("Mensaje recibido: " + message);
+        if (debugEnConsola) Debug.Log("Mensaje recibido: " + message);
         if (txtDebug != null) txtDebug.text += "\n" + ("Mensaje recibido: " + message);
         if (txtDebug != null)
             if (txtDebug.text.Length > 500)
@@ -88,17 +100,20 @@ public class Servidor : MonoBehaviour
 
     private void OnWebSocketClosed(WebSocket webSocket, WebSocketStatusCodes code, string message)
     {
-        Debug.Log("WebSocket is now Closed!");
-
+        if (debugEnConsola) Debug.Log("WebSocket Cerrado D: !");
+        
+        conectado = false;
         if (code == WebSocketStatusCodes.NormalClosure)
         {
-            // Cerrado normalmente
+            estado = "(( <color=#800000> Desconectado normalmente </color> ))";
         }
         else
         {
-            // Error
+            estado = "(( <color=#ff0000> Desconectado por error D: </color> ))";
         }
     }
+
+
     public void EnviarMensaje(string msj)
     {
         ws.Send(msj);

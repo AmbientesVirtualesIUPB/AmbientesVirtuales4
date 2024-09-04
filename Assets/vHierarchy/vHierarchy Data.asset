@@ -18,6 +18,7 @@ MonoBehaviour:
     - f768b15cc3db25d4bb452994596c751b
     - e0e8dc988a5e7444ea358d279f436feb
     - 99c9720ab356a0642a771bea13969a05
+    - bc2601099b95fe1499aa10d66c02eb22
     values:
     - goDatas_byGlobalId:
         keys:
@@ -61,3 +62,12 @@ MonoBehaviour:
     - goDatas_byGlobalId:
         keys: []
         values: []
+    - goDatas_byGlobalId:
+        keys:
+        - globalObjectIdString: GlobalObjectId_V1-2-bc2601099b95fe1499aa10d66c02eb22-1178084543-0
+        - globalObjectIdString: GlobalObjectId_V1-2-bc2601099b95fe1499aa10d66c02eb22-232273199-0
+        values:
+        - colorIndex: 0
+          iconNameOrGuid: AudioReverbZone Icon
+        - colorIndex: 0
+          iconNameOrGuid: Settings Icon
