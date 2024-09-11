@@ -6,6 +6,7 @@ using UnityEngine;
 public class GestionMensajesServidor : MonoBehaviour
 {
     public static GestionMensajesServidor singeton;
+	public bool debugEnConsola = false;
 
 
 	private void Awake()
@@ -15,7 +16,7 @@ public class GestionMensajesServidor : MonoBehaviour
 
 	public void RecibirMensaje(string mensaje)
 	{
-		print("MENSAJE:" + mensaje);
+		if (debugEnConsola) print("MENSAJE:" + mensaje);
 		string codigo = mensaje.Substring(0, 4);
 		string msj = mensaje.Substring(4);
 		switch (codigo)
@@ -47,6 +48,11 @@ public class GestionMensajesServidor : MonoBehaviour
 	}
 	public void AC00(string msj)
 	{
+
+	}
+
+	public void EnviarActualizacionTransform(MorionID morionID, Transform trans) 
+	{ 
 
 	}
 }

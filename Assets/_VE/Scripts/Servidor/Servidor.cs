@@ -9,25 +9,26 @@ public class Servidor : MonoBehaviour
 {
     public delegate void Evento();
     [HideInInspector]
-    public string url = "ws://127.0.0.1:8080";
-    public string puerto = "8080";
-    public bool debugEnPantalla = false;
-    public bool debugEnConsola = false;
+    public string   url             = "ws://127.0.0.1:8080";
+    public string   puerto          = "8080";
+    public bool     debugEnPantalla = false;
+    public bool     debugEnConsola  = false;
+
     [ConditionalHide("debugEnPantalla", true)]
     public UnityEngine.UI.Text txtDebug;
-    WebSocket ws;
+    WebSocket       ws;
     [HideInInspector]
     public GestionMensajesServidor gestorMensajes;
-    public Evento EventoConectado;
+    public Evento   EventoConectado;
     public static Servidor singleton;
     [HideInInspector]
-    public string estado = "((inactivo))";
-    public bool conectado = false;
+    public string   estado          = "((inactivo))";
+    public bool     conectado       = false;
 
     private void Awake()
     {
-        singleton = this;
-        gestorMensajes = GetComponent<GestionMensajesServidor>();
+        singleton       = this;
+        gestorMensajes  = GetComponent<GestionMensajesServidor>();
         EventoConectado += Vacio;
     }
 

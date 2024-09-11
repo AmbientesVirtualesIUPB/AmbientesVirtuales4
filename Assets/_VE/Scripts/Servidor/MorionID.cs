@@ -6,16 +6,12 @@ using UnityEngine.SceneManagement;
 [AddComponentMenu("Morion Servidor/Morion ID")]
 public class MorionID : MonoBehaviour
 {
-	public bool idPersonalizada = false;
+	public bool		idPersonalizada		= false;
+	public bool		isOwner				= false;
 
 	[ConditionalHide("idPersonalizada", true)]
 	public string ID = "";
 
-
-	private void OnIns()
-	{
-		
-	}
 
 	private void OnDrawGizmosSelected()
 	{
@@ -25,8 +21,18 @@ public class MorionID : MonoBehaviour
 		}
 	}
 
-	public void GenerarID()
+	public virtual void GenerarID()
 	{
 		ID = SceneManager.GetActiveScene().name.ToUpper() + "_" + Random.Range(10000, 99999).ToString();
+	}
+
+	public virtual string GetID()
+	{
+		return ID;
+	}
+
+	public virtual bool GetOwner()
+	{
+		return isOwner;
 	}
 }

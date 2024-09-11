@@ -20,5 +20,9 @@ public class ServidorEditor : Editor
 		{
 			s.Conectar();
 		}
+		if (GUILayout.Button("Configuración Default"))
+		{
+			Selection.activeObject = AssetDatabase.LoadAssetAtPath("Assets/Resources/ConfiguracionGeneral.asset", typeof(ConfiguracionGeneral));
+		}
 	}
 }
