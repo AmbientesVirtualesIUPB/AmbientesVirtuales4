@@ -9,6 +9,7 @@ public class MorionTransform : MonoBehaviour
 
 	public bool     sincronizarPosicion;
 	public bool     sincronizarRotacion;
+    public bool     debugEnConsola = false;
     public bool     opcionesAvanzadas = false;
 
     [ConditionalHide("opcionesAvanzadas", true)]
@@ -27,7 +28,8 @@ public class MorionTransform : MonoBehaviour
     private float   _toleranciaPosicion;
     private float   _toleranciaRotacion;
 
-    MorionID morionID;
+    [HideInInspector]
+    public MorionID morionID;
 	private Vector3 posAnterior;
 	private Vector3 rotAnterior;
 	private void Awake()
@@ -41,7 +43,15 @@ public class MorionTransform : MonoBehaviour
         _toleranciaPosicion = toleranciaPosicion * toleranciaPosicion;
         _toleranciaRotacion = toleranciaRotacion * toleranciaRotacion;
         yield return new WaitUntil(() => Servidor.singleton.conectado);
-
+        StartCoroutine(UpdateLento());
+		if (GestionMensajesServidor.singeton == null)
+		{
+            if (debugEnConsola) Debug.LogError("No se ha encontrado un Gestor de Mensajes en el cuál matricular el MorionTrnsform");
+		}
+		else
+		{
+            GestionMensajesServidor.singeton.MatricularMorionTransform(this);
+        }
     }
     public void Inicializar(Vector3 posicion, Vector3 rotacion)
     {
@@ -80,4 +90,11 @@ public class MorionTransform : MonoBehaviour
             }
         }
     }
+
+    public void ActualizarObjetivos(Posicion0 po0)
+	{
+        posicionObjetivo = po0.posicion;
+        rotacionObjetivo = po0.rotacion;
+        print("Actualizando posob" + po0.id_con);
+	}
 }

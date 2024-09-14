@@ -7,7 +7,7 @@ public class GestionMensajesServidor : MonoBehaviour
 {
     public static GestionMensajesServidor singeton;
 	public bool debugEnConsola = false;
-
+	public List<MorionTransform> morionTransforms = new List<MorionTransform>();
 
 	private void Awake()
 	{
@@ -40,11 +40,19 @@ public class GestionMensajesServidor : MonoBehaviour
 	}
 	public void PR00(string msj)
 	{
-
+		
 	}
 	public void AT00(string msj)
 	{
-
+		if(debugEnConsola) print("Mensaje AT00 :::::::> " + msj);
+		Posicion0 po0 = JsonUtility.FromJson<Posicion0>(msj);
+		for (int i = 0; i < morionTransforms.Count; i++)
+		{
+			if (morionTransforms[i].morionID.GetID() == po0.id_con)
+			{
+				morionTransforms[i].ActualizarObjetivos(po0);
+			}
+		}
 	}
 	public void AC00(string msj)
 	{
@@ -52,7 +60,25 @@ public class GestionMensajesServidor : MonoBehaviour
 	}
 
 	public void EnviarActualizacionTransform(MorionID morionID, Transform trans) 
-	{ 
+	{
+		Posicion0 pos = new Posicion0();
+		pos.id_con = morionID.GetID();
+		pos.rotacion = trans.eulerAngles;
+		pos.posicion = trans.position;
+		string msj = "AT00" + JsonUtility.ToJson(pos);
+		Servidor.singleton.EnviarMensaje(msj);
+	}
 
+	public void MatricularMorionTransform(MorionTransform mt)
+	{
+		for (int i = 0; i < morionTransforms.Count; i++)
+		{
+			if (mt.morionID.GetID().Equals(morionTransforms[i].morionID.GetID()))
+			{
+				morionTransforms[i] = mt;
+				return;
+			}
+		}
+		morionTransforms.Add(mt);
 	}
 }

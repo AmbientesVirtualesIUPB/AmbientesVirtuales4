@@ -13,6 +13,7 @@ public class Servidor : MonoBehaviour
     public string   puerto          = "8080";
     public bool     debugEnPantalla = false;
     public bool     debugEnConsola  = false;
+    public bool     autoconectar    = false;
 
     [ConditionalHide("debugEnPantalla", true)]
     public UnityEngine.UI.Text txtDebug;
@@ -48,7 +49,7 @@ public class Servidor : MonoBehaviour
     private void Start()
     {
         url = GetURL();
-        Conectar();
+        if(autoconectar) Conectar();
     }
     public void CambairURL(string n_url)
     {
@@ -95,7 +96,7 @@ public class Servidor : MonoBehaviour
             }
         if (gestorMensajes != null)
         {
-            //gestorMensajes.RecibirMensaje(message.Substring(2));
+            gestorMensajes.RecibirMensaje(message.Substring(2));
         }
     }
 

@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tipoGraficos: 0
   plataformaObjetivo: 0
-  ip: 10.0.100.4
-  puerto: 8080
+  ip: 127.0.0.1
   notas: '10.0.100.4
 
     127.0.0.1'
