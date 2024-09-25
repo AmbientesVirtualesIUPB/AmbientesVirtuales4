@@ -16,7 +16,7 @@ public class GestionMensajesServidor : MonoBehaviour
 
 	public void RecibirMensaje(string mensaje)
 	{
-		if (debugEnConsola) print("MENSAJE:" + mensaje);
+		if (debugEnConsola) print("MENSAJE: " + mensaje);
 		string codigo = mensaje.Substring(0, 4);
 		string msj = mensaje.Substring(4);
 		switch (codigo)
