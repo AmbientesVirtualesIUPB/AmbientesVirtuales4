@@ -12,6 +12,5 @@ public class ScriptableMolecula : ScriptableObject
     [TextArea(minLines: 1, maxLines: 5)]
     public string infoAtomo; // Informacion basica sobre el atomo (fecha de i
     public float[] graficas; // La Informacion delas graficas 
-    public string[] textoGraficas; // La Informacion delas graficas 
 
 }

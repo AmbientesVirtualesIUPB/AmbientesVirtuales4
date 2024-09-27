@@ -15,5 +15,9 @@ MonoBehaviour:
   atomoPrefab: {fileID: 8836215859962339101, guid: 94252585b675d9a419293117b97e7608,
     type: 3}
   nombreAtomo: CubeAtom
-  InfoAtomo: 'Es un cubo muy basic '
-  graficas: []
+  infoAtomo: szs mi fai
+  graficas:
+  - 0.2
+  - 1.5
+  - 3.4
+  - 2
