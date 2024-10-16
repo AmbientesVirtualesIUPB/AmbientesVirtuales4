@@ -5,7 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/_VE/Scenes/LP/Test/Servidor.unity
+    guid: bc2601099b95fe1499aa10d66c02eb22
+  - enabled: 1
+    path: Assets/_VE/Scenes/LP/Login/Login.unity
+    guid: f768b15cc3db25d4bb452994596c751b
+  - enabled: 1
+    path: Assets/_VE/Scenes/LP/Taller Ensamble/Taller.unity
+    guid: 391cf63597d4378458c73ab4b8d82af0
+  - enabled: 1
+    path: Assets/_VE/Scenes/LP/Pista/Pista.unity
+    guid: e0a9f515000921143b74f378b25459bc
   m_configObjects: {}
