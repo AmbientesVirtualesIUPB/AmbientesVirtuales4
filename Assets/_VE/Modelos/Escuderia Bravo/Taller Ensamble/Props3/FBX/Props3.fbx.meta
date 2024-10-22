@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 370917266d54b1b42820575c96ed9042
+guid: 0b90ab0f20540be4a8a3343880307451
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Props3
-    second: {fileID: 2100000, guid: add617899eda66d4e80c2612b9dbf761, type: 2}
+    second: {fileID: 2100000, guid: 72fb2d4d90f3b634f92ac633c3f0c148, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

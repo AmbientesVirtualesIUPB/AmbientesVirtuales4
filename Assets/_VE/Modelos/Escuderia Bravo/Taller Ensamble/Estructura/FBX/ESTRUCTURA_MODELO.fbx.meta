@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1168f86a3aa77d040885748243cc3743
+guid: 6425877b3eb411c4a95fbfb672c5e869
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Props4
-    second: {fileID: 2100000, guid: 709ee160ae1e35145a10d0a3499020f3, type: 2}
+      name: Estructura
+    second: {fileID: 2100000, guid: cdb77b9c7eab1fb47bb42fbefcd99510, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

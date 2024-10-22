@@ -69,7 +69,7 @@ public class IniciarPlataforma : MonoBehaviour
             plataforma.SetBool("open", true);
             plataforma.SetBool("close", false);
             // Damos una pequeña espera despues de abrir la compuerta
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
 
         }else if (posicion == 1)
         {
