@@ -20,7 +20,7 @@ public class EnvioDatosBD : MonoBehaviour
     public int[]    datos = new int[21]; // Array de datos enteros (genero, maleta, cuerpo, cabeza, cejas, cabello, reloj, sombrero, zapatos, tamaño, color1, color2, color3, color4, color5, carroceria, aleron, silla, volante, llanta, bateria)
     public bool     debugEnConsola; // Gestionador de mensajes
 
-    private static EnvioDatosBD instancia;
+    public static EnvioDatosBD instancia;
 
     void Awake()
     {

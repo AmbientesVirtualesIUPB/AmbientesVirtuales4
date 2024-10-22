@@ -98,8 +98,8 @@ public class CanvasPersonalizacion : MonoBehaviour
             txtPeso.text = "50 (Kg)";
             pesoBateria = 50;
 
-            DatosCanvasInformativo.amperiosVelocidad = 10; // Guardamos el dato del amperio para aumentarle la velocidad a nuestro furtivo
-            DatosCanvasInformativo.voltiosCarga = 48; // Guardamos el dato del voltaje para aumentarle la carga a nuestro furtivo
+            DatosCanvasInformativo.amperiosCarga = 48; // Guardamos el dato del amperio para aumentarle la carga a nuestro furtivo
+            DatosCanvasInformativo.voltiosVelocidad = 10; // Guardamos el dato del voltaje para aumentarle la velocidad a nuestro furtivo
             DatosCanvasInformativo.kilovatiosAceleracion = 2; // Guardamos el dato de los kilovatios para aumentarle la aceleracion a nuestro furtivo
         }
         else if (personalizarFurtivo.bateriaIndex - 1 == 1)
@@ -110,8 +110,8 @@ public class CanvasPersonalizacion : MonoBehaviour
             txtPeso.text = "80 (Kg)";
             pesoBateria = 80;
 
-            DatosCanvasInformativo.amperiosVelocidad = 20; // Guardamos el dato del amperio para aumentarle la velocidad a nuestro furtivo
-            DatosCanvasInformativo.voltiosCarga = 60; // Guardamos el dato del voltaje para aumentarle la carga a nuestro furtivo
+            DatosCanvasInformativo.amperiosCarga = 60; // Guardamos el dato del amperio para aumentarle la carga a nuestro furtivo
+            DatosCanvasInformativo.voltiosVelocidad = 20; // Guardamos el dato del voltaje para aumentarle la velocidad a nuestro furtivo
             DatosCanvasInformativo.kilovatiosAceleracion = 4; // Guardamos el dato de los kilovatios para aumentarle la aceleracion a nuestro furtivo
         }
         else if (personalizarFurtivo.bateriaIndex - 1 == 2)
@@ -122,8 +122,8 @@ public class CanvasPersonalizacion : MonoBehaviour
             txtPeso.text = "100 (Kg)";
             pesoBateria = 100;
 
-            DatosCanvasInformativo.amperiosVelocidad = 30; // Guardamos el dato del amperio para aumentarle la velocidad a nuestro furtivo
-            DatosCanvasInformativo.voltiosCarga = 80; // Guardamos el dato del voltaje para aumentarle la carga a nuestro furtivo
+            DatosCanvasInformativo.amperiosCarga = 80; // Guardamos el dato del amperio para aumentarle la carga a nuestro furtivo
+            DatosCanvasInformativo.voltiosVelocidad = 30; // Guardamos el dato del voltaje para aumentarle la velocidad a nuestro furtivo
             DatosCanvasInformativo.kilovatiosAceleracion = 6; // Guardamos el dato de los kilovatios para aumentarle la aceleracion a nuestro furtivo
         }
 
@@ -156,7 +156,7 @@ public class CanvasPersonalizacion : MonoBehaviour
     /// </summary>
     public void InformacionAmperios()
     {
-        txtInformacion.text = "Capacidad de la bateria, nos indica cuanta corriente suministra durante cierto tiempo, a mayor amperaje, mayor sera la velocidad maxima de nuesto furtivo";
+        txtInformacion.text = "Los amperios se refieren a la cantidad de energia de carga que tendremos para movernos, a mayor amperaje, mayor tiempo de carga para nuestro furtivo";
     }
 
     /// <summary>
@@ -164,7 +164,7 @@ public class CanvasPersonalizacion : MonoBehaviour
     /// </summary>
     public void InformacionVoltaje()
     {
-        txtInformacion.text = "Los voltios se refieren a la cantidad de energia de carga que tendremos para movernos, a mayor voltaje, mayor tiempo de carga para nuestro furtivo";
+        txtInformacion.text = "Capacidad de la bateria, nos indica cuanta corriente suministra durante cierto tiempo, a mayor voltaje, mayor sera la velocidad máxima de nuesto furtivo";
     }
 
     /// <summary>
@@ -235,8 +235,8 @@ public class CanvasPersonalizacion : MonoBehaviour
 public static class DatosCanvasInformativo
 {
     public static int pesoFurtivo;
-    public static int amperiosVelocidad;
-    public static int voltiosCarga;
+    public static int amperiosCarga;
+    public static int voltiosVelocidad;
     public static int kilovatiosAceleracion;
     public static int llantasFrenado;
 }

@@ -12,7 +12,7 @@ public class InicializarFurtivo : MonoBehaviour
     public BrazoGiratorio           brazo; // Referencia al brazo giratorio para poderlo detener
     public GameObject               canvas; // Canvas principal
     public GameObject               canvasPantalla; // Canvas pantalla que se visualiza al cambiar las baterias
-    public GameObject               PantallaCarga; // Canvas pantalla que se visualiza al cambiar las baterias
+    public GameObject               PantallaCarga; // Canvas pantalla de carga entre escenas
     public GameObject               Lazer; // Objeto que escanea el furtivo
     private Collider                collider; // Referencia al collider para que no se pueda ejecutar repetidas veces
 
@@ -184,49 +184,15 @@ public class InicializarFurtivo : MonoBehaviour
     /// <summary>
     /// Metodo invocado desde BtnSalir en nuestro canvas para salir de la escena de personalizacion
     /// </summary>
-    public void Salir()
+    public void SalirPlataforma()
     {
         // Indicamos que ya no podemos hacer cambios de camaras
-        //iniciarCamaras = false;
+        iniciarCamaras = false;
         // Iniciamos currutina de salida
-        //StartCoroutine(SalirInicializarPlataforma());
-
-        // Carga asíncrona
-        StartCoroutine(CargarEscenaAsincronamente());
-        //SceneManager.LoadScene("Pista");
+        StartCoroutine(SalirInicializarPlataforma());    
     }
 
-    /// <summary>
-    /// Currutina encargada de hacer carga asíncrona de la escena de la pista una vez termine de guardar la personalizacion de el furtivo
-    /// </summary>
-    IEnumerator CargarEscenaAsincronamente()
-    {  
-        PantallaCarga.SetActive(true); // Activar la pantalla de carga.
-        
-        AsyncOperation operacion = SceneManager.LoadSceneAsync("Pista"); // Iniciar la carga asíncrona de la escena
-
-        operacion.allowSceneActivation = false; // Evita que la escena se active automáticamente cuando termina de cargar
-
-        // Mientras la escena se carga, mostrar la imagen de "Cargando".
-        while (!operacion.isDone)
-        {
-            // Podriamos mostrar el progreso de carga (opcional)
-            //float progreso = Mathf.Clamp01(operacion.progress / 0.9f);
-            //Debug.Log("Progreso de carga: " + (progreso * 100) + "%");
-
-            // Si la escena ha cargado al 90% (es el valor máximo antes de activar la escena).
-            if (operacion.progress >= 0.9f)
-            {
-                // Aquí podríamos agregar una animación o mensaje de "Presiona un botón para continuar" si lo deseamos
-                // Activar la escena una vez que ha terminado de cargar.       
-                operacion.allowSceneActivation = true;  
-            }
-            yield return null;
-            
-        }
-        PantallaCarga.SetActive(false); // Desactivamos la pantalla de carga.
-    }
-
+    
     /// <summary>
     /// Currutina que se ejecuta al salir de la personalizacion
     /// </summary>
@@ -277,6 +243,15 @@ public class InicializarFurtivo : MonoBehaviour
 
         // Habilitamos nuevamente el collider
         collider.enabled = true;
+    }
+
+    /// <summary>
+    /// Metodo invocado desde BtnSalir en nuestro canvas para salir de la escena de personalizacion y cambiar se escena
+    /// </summary>
+    public void SalirScena()
+    {
+        PantallaCarga.SetActive(true); // Activar la pantalla de carga.  
+        ManagerScene.instance.CargarEscenaAsincronamente("Pista");
     }
 
     /// <summary>

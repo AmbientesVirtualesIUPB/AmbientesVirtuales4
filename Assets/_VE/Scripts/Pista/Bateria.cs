@@ -18,7 +18,7 @@ public class Bateria : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        capacidadMaxima = capacidadMaxima + DatosCanvasInformativo.voltiosCarga; // Asignamos a la carga el valor adicional dependiendo de la bateria elegida
+        capacidadMaxima = capacidadMaxima + DatosCanvasInformativo.amperiosCarga; // Asignamos a la carga el valor adicional dependiendo de la bateria elegida
         cargaActual = capacidadMaxima; // Asignamos la carga actual de la bateria
         imgFill.color = colores.Evaluate(1); // Asignamos un color base a la bateria, en este caso verde azul
     }

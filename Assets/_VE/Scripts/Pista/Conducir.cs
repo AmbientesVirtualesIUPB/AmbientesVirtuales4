@@ -136,7 +136,7 @@ public class Conducir : MonoBehaviour
     {
         carRigidbody = GetComponent<Rigidbody>(); // Inicializamos el componenete rigibody para acceder a su masa
         carRigidbody.mass = 950 + DatosCanvasInformativo.pesoFurtivo; // Asignamos a la masa el valor adicional dependiendo del peso total del furtivo
-        maxSpeed = maxSpeed + DatosCanvasInformativo.amperiosVelocidad; // Asignamos a la velocidad el valor adicional dependiendo de la bateria elegida
+        maxSpeed = maxSpeed + DatosCanvasInformativo.voltiosVelocidad; // Asignamos a la velocidad el valor adicional dependiendo de la bateria elegida
         accelerationMultiplier = accelerationMultiplier + DatosCanvasInformativo.kilovatiosAceleracion; // Asignamos a la aceleracion el valor adicional dependiendo de la bateria elegida
         brakeForce = brakeForce + DatosCanvasInformativo.llantasFrenado; // Asignamos a la fuerza de frenado el valor adicional dependiendo de las llantas elegida
         
@@ -351,7 +351,7 @@ public class Conducir : MonoBehaviour
             {
                 Brakes();
             }
-
+            
             if (Input.GetKey(KeyCode.Space))
             {
                 CancelInvoke("DecelerateCar");
@@ -375,6 +375,7 @@ public class Conducir : MonoBehaviour
             {
                 ResetSteeringAngle();
             }
+            
         }
         // Llamamos al metodo AnimateWheelMeshes() para hacer coincidir los movimientos del colisionador de ruedas con las mallas 3D de las ruedas.
         AnimateWheelMeshes();
@@ -560,6 +561,7 @@ public class Conducir : MonoBehaviour
     // Este método aplica un torque positivo a las ruedas para poder avanzar
     public void GoForward()
     {   
+        
         acelerando = true;
         
         if (descargado) 

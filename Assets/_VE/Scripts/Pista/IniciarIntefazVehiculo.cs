@@ -248,4 +248,12 @@ public class IniciarIntefazVehiculo : MonoBehaviour
 
         flag = false; // Bandera en verdadero para evitar errorres al momento de cambiar entre encendido y apagado
     }
+
+    /// <summary>
+    /// Metodo invocado desde BtnSalir en nuestro canvas para salir de la escena 
+    /// </summary>
+    public void SalirScena()
+    {
+        ManagerScene.instance.CargarEscenaAsincronamente("Taller");
+    }
 }
